@@ -24,11 +24,7 @@ namespace Codecool.LeagueStatistics.Factory
             {
                 for(int i = 0; i < teamsInDivision; i++)
                 {
-                    List<Player> players = new();
-                    for(int j = 0; j < Utils.TeamSize; j++)
-                    {
-                        players.Add(new Player(PlayerSkillRate));
-                    }
+                    IEnumerable<Player> players = GetPlayers(Utils.TeamSize);
                     teams.Add(new Team(division, players));
                 }
             }
@@ -41,7 +37,11 @@ namespace Codecool.LeagueStatistics.Factory
         /// <param name="amount"></param>
         /// <returns></returns>
         private static IEnumerable<Player> GetPlayers(int amount)
-            => throw new NotImplementedException();
+        {
+            List<Player> players = new List<Player>();
+            for (int i = 0; i < amount; i++) players.Add(new Player(PlayerSkillRate));
+            return players;
+        }
 
         private static int PlayerSkillRate => Utils.Random.Next(5, 21);
     }
