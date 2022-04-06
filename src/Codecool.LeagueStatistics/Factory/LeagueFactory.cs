@@ -17,7 +17,23 @@ namespace Codecool.LeagueStatistics.Factory
         /// <param name="teamsInDivision">Indicates number of teams are in division</param>
         /// <returns>Full set of teams with players</returns>
         public static IEnumerable<Team> CreateLeague(int teamsInDivision)
-            => throw new NotImplementedException();
+        {
+            var teams = new List<Team>();
+            var enumValues = Enum.GetValues(typeof(Division));
+            foreach(Division division in enumValues)
+            {
+                for(int i = 0; i < teamsInDivision; i++)
+                {
+                    List<Player> players = new();
+                    for(int j = 0; j < Utils.TeamSize; j++)
+                    {
+                        players.Add(new Player(PlayerSkillRate));
+                    }
+                    teams.Add(new Team(division, players));
+                }
+            }
+            return teams;
+        }
 
         /// <summary>
         ///     Returns a collection with a given amount of newly created players
