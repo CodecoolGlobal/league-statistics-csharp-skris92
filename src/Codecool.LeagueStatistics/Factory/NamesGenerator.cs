@@ -9,13 +9,13 @@ namespace Codecool.LeagueStatistics.Facotry
     {
         public static string GetPlayerName()
         {
-            return File.ReadAllLines("PlayerNames.txt").GetRandomValue();
+            return File.ReadAllLines("C:\\Users\\Admin\\source\\repos\\league-statistics-csharp-skris92\\data\\PlayerNames.txt").GetRandomValue();
         }
 
         public static string GetTeamName()
         {
-            var cities = File.ReadAllLines("CityNames.txt");
-            var names = File.ReadAllLines("TeamNames.txt");
+            var cities = File.ReadAllLines("C:\\Users\\Admin\\source\\repos\\league-statistics-csharp-skris92\\data\\CityNames.txt");
+            var names = File.ReadAllLines("C:\\Users\\Admin\\source\\repos\\league-statistics-csharp-skris92\\data\\TeamNames.txt");
 
             return cities.GetRandomValue() + " " + names.GetRandomValue();
         }
