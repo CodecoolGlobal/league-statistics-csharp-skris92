@@ -43,7 +43,6 @@ namespace Codecool.LeagueStatistics.Controllers
             {
                 for (int j = i + 1; j < League.Count; j++)
                 {
-                    if (i == j) continue;
                     PlayMatch(League[i], League[j]);
                 }
             }
