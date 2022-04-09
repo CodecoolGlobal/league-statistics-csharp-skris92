@@ -68,7 +68,7 @@ namespace Codecool.LeagueStatistics.Model
         /// <param name="teams"></param>
         /// <returns></returns>
         public static IEnumerable<Team> GetTeamsWithPlayersWithoutGoals(this IEnumerable<Team> teams)
-            => throw new NotImplementedException();
+            => teams.Where(team => team.Players.Any(player => player.Goals == 0)).Select(team => team);
 
         /// <summary>
         /// Gets players with given or higher number of goals scored.
