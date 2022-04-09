@@ -18,8 +18,7 @@ namespace Codecool.LeagueStatistics.Model
             //=> from team in teams orderby team.CurrentPoints descending select team;
             => teams
             .OrderByDescending(team => team.CurrentPoints)
-            .ThenByDescending(team => team.Players.Select(player => player.Goals).Sum())
-            .Select(team => team);
+            .ThenByDescending(team => team.Players.Select(player => player.Goals).Sum());
 
         /// <summary>
         ///     Gets all players from each team in one collection.
@@ -45,7 +44,7 @@ namespace Codecool.LeagueStatistics.Model
         /// <param name="teamsNumber">The number of Teams to select.</param>
         /// <returns>Collection of selected Teams.</returns>
         public static IEnumerable<Team> GetTopTeamsWithLeastLoses(this IEnumerable<Team> teams, int teamsNumber)
-            => throw new NotImplementedException();
+            => teams.OrderBy(team => team.Losts).ThenBy(team => -team.CurrentPoints).Take(teamsNumber);
 
         /// <summary>
         ///     Gets a player with the biggest goals number from each team.
