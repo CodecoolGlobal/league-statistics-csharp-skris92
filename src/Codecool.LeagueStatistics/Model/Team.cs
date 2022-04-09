@@ -29,10 +29,7 @@ namespace Codecool.LeagueStatistics.Model
         {
             get
             {
-                int currentPoints = 0;
-                for (var i = 0; i < Wins; i++) currentPoints += 3;
-                for (var i = 0; i < Draws; i++) currentPoints++;
-                return currentPoints;
+                return Wins * 3 + Draws;
             }
         }
 
