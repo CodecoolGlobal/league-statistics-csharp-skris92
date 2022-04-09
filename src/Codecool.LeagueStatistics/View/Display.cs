@@ -14,5 +14,10 @@ namespace Codecool.LeagueStatistics.View
         {
             Console.WriteLine($"{team1Name}: {score1} -- {team2Name}: {score2}");
         }
+
+        public static void DisplayFinalResult()
+        {
+
+        }
     }
 }
