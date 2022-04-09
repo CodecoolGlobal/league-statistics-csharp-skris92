@@ -51,7 +51,7 @@ namespace Codecool.LeagueStatistics.Model
         /// <param name="teams"></param>
         /// <returns></returns>
         public static IEnumerable<Player> GetTopPlayersFromEachTeam(this IEnumerable<Team> teams)
-            => throw new NotImplementedException();
+            => teams.Select(team => team.Players.OrderByDescending(player => player.Goals).First());
 
         /// <summary>
         ///     Returns the division with greatest amount of points.
