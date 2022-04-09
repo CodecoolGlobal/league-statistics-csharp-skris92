@@ -25,7 +25,8 @@ namespace Codecool.LeagueStatistics.Model
         /// <param name="teams"></param>
         /// <returns></returns>
         public static IEnumerable<Player> GetAllPlayers(this IEnumerable<Team> teams)
-            => teams.SelectMany(team => team.Players.Select(player => player));
+            => teams
+            .SelectMany(team => team.Players.Select(player => player));
 
         /// <summary>
         ///     Gets team with the longest name
@@ -33,7 +34,9 @@ namespace Codecool.LeagueStatistics.Model
         /// <param name="teams"></param>
         /// <returns></returns>
         public static Team GetTeamWithTheLongestName(this IEnumerable<Team> teams)
-            => teams.OrderByDescending(team => team.Name.Length).First();
+            => teams
+            .OrderByDescending(team => team.Name.Length)
+            .First();
 
         /// <summary>
         ///     Gets top teams with least number of lost matches.
@@ -43,7 +46,10 @@ namespace Codecool.LeagueStatistics.Model
         /// <param name="teamsNumber">The number of Teams to select.</param>
         /// <returns>Collection of selected Teams.</returns>
         public static IEnumerable<Team> GetTopTeamsWithLeastLoses(this IEnumerable<Team> teams, int teamsNumber)
-            => teams.OrderBy(team => team.Losts).ThenBy(team => -team.CurrentPoints).Take(teamsNumber);
+            => teams
+            .OrderBy(team => team.Losts)
+            .ThenBy(team => -team.CurrentPoints)
+            .Take(teamsNumber);
 
         /// <summary>
         ///     Gets a player with the biggest goals number from each team.
@@ -51,7 +57,8 @@ namespace Codecool.LeagueStatistics.Model
         /// <param name="teams"></param>
         /// <returns></returns>
         public static IEnumerable<Player> GetTopPlayersFromEachTeam(this IEnumerable<Team> teams)
-            => teams.Select(team => team.Players.OrderByDescending(player => player.Goals).First());
+            => teams
+            .Select(team => team.Players.OrderByDescending(player => player.Goals).First());
 
         /// <summary>
         ///     Returns the division with greatest amount of points.
@@ -60,7 +67,10 @@ namespace Codecool.LeagueStatistics.Model
         /// <param name="teams"></param>
         /// <returns></returns>
         public static Division GetStrongestDivision(this IEnumerable<Team> teams)
-            => teams.OrderByDescending(team => team.CurrentPoints).ThenByDescending(team => team.Wins).First().Division;
+            => teams
+            .OrderByDescending(team => team.CurrentPoints)
+            .ThenByDescending(team => team.Wins)
+            .First().Division;
 
         /// <summary>
         ///     Gests all teams, where there are players with no scored goals.
@@ -68,7 +78,9 @@ namespace Codecool.LeagueStatistics.Model
         /// <param name="teams"></param>
         /// <returns></returns>
         public static IEnumerable<Team> GetTeamsWithPlayersWithoutGoals(this IEnumerable<Team> teams)
-            => teams.Where(team => team.Players.Any(player => player.Goals == 0)).Select(team => team);
+            => teams
+            .Where(team => team.Players.Any(player => player.Goals == 0))
+            .Select(team => team);
 
         /// <summary>
         /// Gets players with given or higher number of goals scored.
@@ -77,7 +89,9 @@ namespace Codecool.LeagueStatistics.Model
         /// <param name="goals">The minimal number of golas scored.</param>
         /// <returns>Collection of Players with given or higher number of goals scored.</returns>
         public static IEnumerable<Player> GetPlayersWithAtLeastXGoals(this IEnumerable<Team> teams, int goals)
-            => teams.SelectMany(team => team.Players.Where(player => player.Goals >= goals).Select(player => player));
+            => teams
+            .SelectMany(team => team.Players.Where(player => player.Goals >= goals)
+            .Select(player => player));
 
         /// <summary>
         ///     Gets the player with the highest skill rate for given Division.
