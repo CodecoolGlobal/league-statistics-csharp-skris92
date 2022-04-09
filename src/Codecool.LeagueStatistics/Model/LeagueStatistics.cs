@@ -60,7 +60,7 @@ namespace Codecool.LeagueStatistics.Model
         /// <param name="teams"></param>
         /// <returns></returns>
         public static Division GetStrongestDivision(this IEnumerable<Team> teams)
-            => throw new NotImplementedException();
+            => teams.OrderByDescending(team => team.CurrentPoints).ThenByDescending(team => team.Wins).First().Division;
 
         /// <summary>
         ///     Gests all teams, where there are players with no scored goals.
