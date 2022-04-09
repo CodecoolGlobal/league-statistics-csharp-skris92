@@ -86,7 +86,16 @@ namespace Codecool.LeagueStatistics.Model
         /// <param name="division"></param>
         /// <returns></returns>
         public static Player GetMostTalentedPlayerInDivision(this IEnumerable<Team> teams, Division division)
-            => throw new NotImplementedException();
+            => teams
+            .Where(team => team.Division == division)
+            .SelectMany(team => team.Players
+            .OrderByDescending(player => player.SkillRate)
+            .Select(player => player))
+            .First();
+            //=> teams
+            //.Where(team => team.Division == division)
+            //.Select(team => team.Players.MaxBy(player => player.SkillRate))
+            //.First();
 
     }
 }
