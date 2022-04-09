@@ -18,7 +18,7 @@ namespace Codecool.LeagueStatistics.Model
             //=> from team in teams orderby team.CurrentPoints descending select team;
             => teams
             .OrderByDescending(team => team.CurrentPoints)
-            .ThenByDescending(team => (team.Players.Select(player => player.Goals)).Sum())
+            .ThenByDescending(team => team.Players.Select(player => player.Goals).Sum())
             .Select(team => team);
 
         /// <summary>
