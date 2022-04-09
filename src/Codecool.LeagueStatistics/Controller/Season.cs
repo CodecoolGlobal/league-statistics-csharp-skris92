@@ -39,7 +39,14 @@ namespace Codecool.LeagueStatistics.Controllers
         /// </summary>
         public void PlayAllGames()
         {
-            throw new NotImplementedException();
+            for (int i = 0; i < League.Count - 1; i++)
+            {
+                for (int j = i + 1; j < League.Count; j++)
+                {
+                    if (i == j) continue;
+                    PlayMatch(League[i], League[j]);
+                }
+            }
         }
         /// <summary>
         ///     Plays single game between two teams and displays result after.
