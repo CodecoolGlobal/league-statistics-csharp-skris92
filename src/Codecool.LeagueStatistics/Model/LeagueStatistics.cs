@@ -19,7 +19,7 @@ namespace Codecool.LeagueStatistics.Model
             => teams
             .OrderByDescending(team => team.CurrentPoints)
             .ThenByDescending(team => (team.Players.Select(player => player.Goals)).Sum())
-            .Select(team => team).ToList();
+            .Select(team => team);
 
         /// <summary>
         ///     Gets all players from each team in one collection.
@@ -27,7 +27,7 @@ namespace Codecool.LeagueStatistics.Model
         /// <param name="teams"></param>
         /// <returns></returns>
         public static IEnumerable<Player> GetAllPlayers(this IEnumerable<Team> teams)
-            => throw new NotImplementedException();
+            => teams.SelectMany(team => team.Players.Select(player => player));
 
         /// <summary>
         ///     Gets team with the longest name
