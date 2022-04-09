@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Codecool.LeagueStatistics.Factory;
 using Codecool.LeagueStatistics.Model;
+using Codecool.LeagueStatistics;
 
 namespace Codecool.LeagueStatistics.Controllers
 {
@@ -55,7 +56,16 @@ namespace Codecool.LeagueStatistics.Controllers
         /// <returns>All goals scored by the team in current game</returns>
         public int ScoredGoals(Team team)
         {
-            throw new NotImplementedException();
+            int score = 0;
+            foreach (var player in team.Players)
+            {
+                if (Utils.Random.Next(1, 101) <= player.SkillRate)
+                {
+                    score++;
+                    player.Goals++;
+                }
+            }
+            return score;
         }
     }
 }
