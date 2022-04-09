@@ -7,6 +7,8 @@ using Codecool.LeagueStatistics;
 
 namespace Codecool.LeagueStatistics.Controllers
 {
+    using static Codecool.LeagueStatistics.Model.LeagueStatistics;
+
     /// <summary>
     ///     Provides all necessary methods for season simulation
     /// </summary>
@@ -33,6 +35,7 @@ namespace Codecool.LeagueStatistics.Controllers
             PlayAllGames();
             Display.DisplayFinalResult();
             // Call Display methods here
+
         }
         /// <summary>
         ///     Playing one round. Everyone with everyone one time. 
