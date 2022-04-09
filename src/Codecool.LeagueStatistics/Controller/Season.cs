@@ -31,7 +31,7 @@ namespace Codecool.LeagueStatistics.Controllers
                 League.Add(team);
             }
             PlayAllGames();
-
+            Display.DisplayFinalResult();
             // Call Display methods here
         }
         /// <summary>
