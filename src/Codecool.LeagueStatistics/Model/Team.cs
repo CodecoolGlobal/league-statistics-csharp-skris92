@@ -25,7 +25,16 @@ namespace Codecool.LeagueStatistics.Model
         /// <summary>
         /// CurrentPoints is a sum of wins and draws points. For each win 3 points, for draw 1 point.
         /// </summary>
-        public int CurrentPoints => throw new NotImplementedException();
+        public int CurrentPoints
+        {
+            get
+            {
+                int currentPoints = 0;
+                for (var i = 0; i < Wins; i++) currentPoints += 3;
+                for (var i = 0; i < Draws; i++) currentPoints++;
+                return currentPoints;
+            }
+        }
 
         public Team(Division division, IEnumerable<Player> players)
         {
