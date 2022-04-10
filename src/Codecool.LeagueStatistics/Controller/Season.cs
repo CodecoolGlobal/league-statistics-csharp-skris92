@@ -7,8 +7,6 @@ using Codecool.LeagueStatistics;
 
 namespace Codecool.LeagueStatistics.Controllers
 {
-    using static Codecool.LeagueStatistics.Model.LeagueStatistics;
-
     /// <summary>
     ///     Provides all necessary methods for season simulation
     /// </summary>
@@ -33,7 +31,7 @@ namespace Codecool.LeagueStatistics.Controllers
                 League.Add(team);
             }
             PlayAllGames();
-            Display.DisplayFinalResult();
+            Display.DisplayFinalResult(League);
             // Call Display methods here
 
         }
